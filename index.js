@@ -41,6 +41,12 @@ app.get("/search", async(req,res)=>{
     res.send(result)
 })
 
+app.delete("/delete/:title", async(req,res)=>{
+             let titleparam=req.params["title"]
+             console.log(titleparam,"deleted")
+                await MovieModel.deleteOne({ title:titleparam})
+                res.send("item deleted")
+})
 
 app.listen(8030, async()=>{
     try{
