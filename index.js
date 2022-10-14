@@ -31,6 +31,16 @@ app.get("/filterTitle", async(req,res)=>{
     res.send(result)
 })
 
+app.get("/search", async(req,res)=>{
+    let searchParam=req.query.q
+    if(searchParam){
+      
+    
+      var result= await MovieModel.find({title: { '$regex': searchParam}}, {})
+    }
+    res.send(result)
+})
+
 
 app.listen(8030, async()=>{
     try{
